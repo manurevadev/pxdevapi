@@ -341,7 +341,7 @@ This api is used to validate the verification code received / entered by the use
         
 ##StatusCode[/statuscode]
 
-### Create new status Code [POST]
+### Create New status Code [POST]
 
 You may create a new StatusCode this action.
 
@@ -357,19 +357,63 @@ You may create a new StatusCode this action.
 
     + Body
 
-       {
+        {
             "status": "OK",
             "statusCode": "200",
             "message": "statusCode list retrived successfully !",
             "data": [
-               {
-                    "id": 2,
-                    "statusCode": "1002",
-                    "language": "AR",
-                    "message": "login failed in Arabien",
-                    "createdDate": "2017-09-08T13:29:21.000Z",
-                    "updatedDate": "2017-09-08T13:36:22.000Z",
-                    "status": "1"
+                    {
+                        "id": 2,
+                        "statusCode": "1002",
+                        "language": "AR",
+                        "message": "login failed in Arabien",
+                        "createdDate": "2017-09-08T13:29:21.000Z",
+                        "updatedDate": "2017-09-08T13:36:22.000Z",
+                        "status": "1"
                     }
-                ]
+                    ]
+        }
+            
+### Get List all the Status Code [GET]
+
+This api is used to list all the status Code
+
++ Response 201 (application/json)
+
+   {
+    "status": "OK",
+    "statusCode": "200",
+    "message": "statusCode list retrived successfully !",
+    "data": [
+            {
+                "id": 2,
+                "statusCode": "1002",
+                "language": "AR",
+                "message": "login failed in Arabien",
+                "createdDate": "2017-09-08T13:29:21.000Z",
+                "updatedDate": "2017-09-08T13:36:22.000Z",
+                "status": "1"
             }
+            ]
+    }
+
+
+### DELETE status Code [DELETE]
+
+You may delete a StatusCode this action.
+
++ Request (application/json)
+
+        {
+        "id":"2"
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+        {
+            "status": "OK",
+            "statusCode": "200",
+            "message": "statusCode deleted successfully !"
+        }
