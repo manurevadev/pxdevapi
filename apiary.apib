@@ -417,3 +417,24 @@ You may delete a StatusCode this action.
             "statusCode": "200",
             "message": "statusCode deleted successfully !"
         }
+        
+###update status Code [PUT]
+
+You may Update a StatusCode this action.
++ Request (application/json)
+
+        {
+        "id":"2",
+        "statusCode":"1021",
+        "language":"FR",
+        "message":"login failed in French"
+        }
++ Response 201 (application/json)
+
+    + Body
+
+        {
+            "status": "OK",
+            "statusCode": "200",
+            "message": "statusCode Updated successfully !"
+        }
