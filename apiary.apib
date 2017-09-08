@@ -1,0 +1,340 @@
+FORMAT: 1A
+HOST: https://t1hgo1qq9k.execute-api.eu-central-1.amazonaws.com/Dev
+
+# Premier X API
+
+Premier X Api list
+
+## Roles [/role]
+
+### List All Roles [GET]
+
+This api will list all the available roles in the system
+
++ Response 200 (application/json)
+
+        {
+            "status":"OK","statusCode":"200","data":[{"id":1,"title":"Super Admin","status":1,"createdDate":"2017-08-01T11:41:39.000Z"},{"id":2,"title":"License Holder","status":1,"createdDate":"2017-08-01T11:42:04.000Z"},{"id":3,"title":"Admin","status":1,"createdDate":"2017-08-01T11:42:14.000Z"},{"id":4,"title":"Event Organizer","status":1,"createdDate":"2017-08-01T11:42:53.000Z"},{"id":5,"title":"Event Admin","status":1,"createdDate":"2017-08-01T11:43:00.000Z"},{"id":6,"title":"Event Participant","status":1,"createdDate":"2017-08-01T11:43:09.000Z"},{"id":7,"title":"User","status":1,"createdDate":"2017-08-01T11:43:16.000Z"},{"id":8,"title":"Visitor","status":1,"createdDate":"2017-08-01T11:43:21.000Z"}],"message":"Role retrived successfully !"
+        }
+
+## Privileges [/privilege]
+
+### List All Privileges [GET]
+
+This api will list all the available privileges in the system
+
++ Response 200 (application/json)
+
+        {
+        "status":"OK","statusCode":"200","message":"Privilege retrived successfully !","data":[{"id":1,"title":"search_events","status":1,"createdDate":"2017-08-01T11:48:45.000Z"},{"id":2,"title":"view_event","status":1,"createdDate":"2017-08-01T11:49:03.000Z"},{"id":3,"title":"register_event","status":1,"createdDate":"2017-08-01T11:49:12.000Z"},{"id":4,"title":"add_accept_friend","status":1,"createdDate":"2017-08-01T11:49:38.000Z"},{"id":5,"title":"crud_us_account_details","status":1,"createdDate":"2017-08-01T11:50:17.000Z"},{"id":6,"title":"crud_lh_account_details","status":1,"createdDate":"2017-08-01T11:50:26.000Z"},{"id":7,"title":"crud_ad_account_details","status":1,"createdDate":"2017-08-01T11:50:32.000Z"},{"id":8,"title":"crud_eo_account_details","status":1,"createdDate":"2017-08-01T11:50:38.000Z"},{"id":9,"title":"crud_ea_account_details","status":1,"createdDate":"2017-08-01T11:50:46.000Z"},{"id":10,"title":"update_franchise_license_details","status":1,"createdDate":"2017-08-01T11:51:13.000Z"},{"id":11,"title":"crud_event","status":1,"createdDate":"2017-08-01T11:51:20.000Z"},{"id":12,"title":"crud_store","status":1,"createdDate":"2017-08-01T11:51:26.000Z"},{"id":13,"title":"create_discount_codes","status":1,"createdDate":"2017-08-01T11:51:35.000Z"},{"id":14,"title":"credit_us_account","status":1,"createdDate":"2017-08-01T11:51:44.000Z"},{"id":15,"title":"upload_event_result","status":1,"createdDate":"2017-08-01T11:51:55.000Z"},{"id":16,"title":"upload_event_photos","status":1,"createdDate":"2017-08-01T11:52:06.000Z"},{"id":17,"title":"view_event_registration","status":1,"createdDate":"2017-08-01T11:52:21.000Z"},{"id":18,"title":"view_event_results","status":1,"createdDate":"2017-08-01T11:52:30.000Z"},{"id":19,"title":"view_event_photos","status":1,"createdDate":"2017-08-01T11:52:35.000Z"},{"id":20,"title":"view_event_financials","status":1,"createdDate":"2017-08-01T11:52:45.000Z"},{"id":21,"title":"view_event_statistics","status":1,"createdDate":"2017-08-01T11:52:51.000Z"},{"id":22,"title":"view_us_history","status":1,"createdDate":"2017-08-01T11:53:05.000Z"}]
+        }
+        
+## Roleprivileges [/roleprivilege]
+
+### List All RolePrivileges [GET]
+
+This api will list all the available role privileges in the system
+
++ Response 200 (application/json)
+
+        
++ Response 200 (application/json)
+
+        {
+        "status":"OK","statusCode":"200",
+        "message":"Role privilege retrived successfully !",
+        "data":[
+            {"id":1,"roleId":1,"privilegeId":1,"status":1,"createdDate":"2017-08-01T12:05:50.000Z"},
+            {"id":2,"roleId":1,"privilegeId":2,"status":1,"createdDate":"2017-08-01T12:05:50.000Z"},
+            {"id":3,"roleId":1,"privilegeId":3,"status":1,"createdDate":"2017-08-01T12:05:50.000Z"}
+            ]
+        }      
+
+## User [/user]
+
+
+### Create a New User [POST]
+
+You may create a new user using this action. either fbid, indentityId  or  sub is mandatory, not both. If  registertype is fb  , then fbid, indentityId is mandotory and if registertype is normal , then sub is Mandatory.
+
++ Request (application/json)
+
+        {
+          "registerType": "fb",
+          "action": "signup",
+          "identityId": "234111",
+          "fbId":"5667111",
+          "sub":"47884756",
+          "firstName":"testname",
+          "lastName":"testdfds",
+          "email":"test1222@gmail.com",
+          "mobile":"+5645654645"
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "status": "OK",
+                "statusCode": "200",
+                "message": "Premier ID Generated successfully !",
+                "premierId": 10273
+            }
+            
+## Site [/site]
+
+### Create a New Site [POST]
+
+You may create a new Site this action.
+
++ Request (application/json)
+
+        {
+        "domain" : "www.example.com",
+        "licenseHolderId" : "2"
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "status": "OK",
+                "statusCode": "200",
+                "message": "Sited added successfully !",
+                "siteId": 7
+            }
+
+            
+### List All Site [GET]
+
+This api will list all the available Site in the system
+
++ Response 200 (application/json)
+
+        {
+        "status": "OK",
+        "statusCode": "200",
+        "message": "Sites retrived successfully !","data":[
+        {"id": 3,"domain": "www.example23.com","status": 1,"licenseHolderId": 2, "createdDate": "2017-08-03T13:11:29.000Z"},
+        {"id": 5,"domain": "www.example23435.com","status": 1,"licenseHolderId": 2,"createdDate": "2017-08-03T13:13:07.000Z"},
+        {"id": 7,"domain": "www.examplfsde.com","status": 1,"licenseHolderId": 2,"createdDate": "2017-08-04T03:53:54.000Z"}]
+        }
+
+### Update Site [PUT]
+
+You may create a Update Site this action.
+
++ Request (application/json)
+        
+        {
+        "domain" : "www.example.com",
+        "licenseHolderId" : "2",
+        "id" : 1
+        }
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "status": "OK",
+                "statusCode": "200",
+                "message": "Site updated successfully !",
+                "privilegeId": 1
+            }
+
+## View Site [/site?id=3]
+
+### View Particular Site [GET]
+
+This api will show the Particular site in the system
+
++ Response 200 (application/json)
+
+        {
+         "status":"OK",
+         "statusCode":"200",
+         "message":"Sites retrived successfully !","data":[
+                 {
+                 "id":3,"domain":"www.example23.com","status":1,"licenseHolderId":2,"createdDate":"2017-08-03T13:11:29.000Z"
+                 }
+               ]
+        }
+        
+## BloodGroups [/bloodgroup]
+
+### List All BloodGroups [GET]
+
+This api will list all the available bloodgroups in the system
+
++ Response 200 (application/json)
+
+        {
+        "status":"OK","statusCode":"200","data":[
+            {"id":1,"title":"O+","status":1,"createdDate":"2017-08-28T11:41:39.000Z"},
+            {"id":2,"title":"O-","status":1,"createdDate":"2017-08-29T11:41:39.000Z"},
+            {"id":3,"title":"B+","status":1,"createdDate":"2017-08-29T11:41:39.000Z"},
+            {"id":4,"title":"B-","status":1,"createdDate":"2017-08-29T11:41:39.000Z"},
+            {"id":5,"title":"AB+","status":1,"createdDate":"2017-08-29T11:41:39.000Z"},
+            {"id":6,"title":"AB-","status":1,"createdDate":"2017-08-29T11:41:39.000Z"},
+            {"id":7,"title":"A-","status":1,"createdDate":"2017-08-29T11:41:39.000Z"},
+            {"id":8,"title":"A+","status":1,"createdDate":"2017-08-29T11:41:39.000Z"}
+        ],"message":"Bloodgroup list retrived successfully !"
+        }
+
+## Nationality [/nationality]
+
+### List All Nationality [GET]
+
+This api will list all the available nationality in the system
+
++ Response 200 (application/json)
+
+        {
+        "status":"OK","statusCode":"200","data":[
+            {"id":1,"title":"French","status":1,"createdDate":"2017-08-29T11:41:39.000Z"},
+            {"id":2,"title":"German","status":1,"createdDate":"2017-08-29T11:41:39.000Z"},
+            {"id":3,"title":"Indian","status":1,"createdDate":"2017-08-29T11:41:39.000Z"}
+            ],
+        "message":"Nationality list retrived successfully !"
+        }
+        
+## Country [/country]
+
+### List All Countries [GET]
+
+This api will list all the available Countries in the system
+
++ Response 200 (application/json)
+
+        {
+        "status":"OK","statusCode":"200","data":[
+            {"id":1,"title":"France","status":1,"createdDate":"0000-00-00 00:00:00","countryCode":"FR"},
+            {"id":2,"title":"Afghanistan","status":1,"createdDate":null,"countryCode":"AF"},
+            {"id":3,"title":"Albania","status":1,"createdDate":null,"countryCode":"AL"},
+            {"id":4,"title":"Algeria","status":1,"createdDate":null,"countryCode":"DZ"}
+                ],
+        "message":"Country list retrived successfully !"
+        }
+        
+## Languages [/language]
+
+### List All Languages [GET]
+
+
+This api will list all the available Languages in the system
+
++ Response 200 (application/json)
+
+        {
+        "status":"OK", "statusCode":"200","data":[
+            {"id":1,"title":"English","status":1,"createdDate":"2017-08-30T10:08:12.000Z","langCode":"EN"},
+            {"id":2,"title":"French","status":1,"createdDate":"2017-08-30T10:08:12.000Z","langCode":"FR"},
+            {"id":3,"title":"Arabian","status":1,"createdDate":"2017-08-30T10:08:12.000Z","langCode":"AR"}],
+        "message":"Language list retrived successfully !"
+        }
+        
+## EventType [/eventtype]
+
+### List All EventType [GET]
+
+This api will list all the available EventTypes in the system
+
++ Response 200 (application/json)
+
+        {
+        "status":"OK","statusCode":"200","data":[
+            {"id":1,"title":"Camp, Trip or Retreat","status":1,"createdDate":"2017-08-30T11:13:12.000Z"},
+            {"id":2,"title":"Class, Training or Workshop","status":1,"createdDate":"2017-08-30T11:13:12.000Z"},
+            {"id":3,"title":"Conference, Meeting or Networking Event","status":1,"createdDate":"2017-08-30T11:13:12.000Z"},
+            {"id":4,"title":"Dinner or Gala","status":1,"createdDate":"2017-08-30T11:13:12.000Z"},
+            {"id":5,"title":"Festival or Fair","status":1,"createdDate":"2017-08-30T11:13:12.000Z"},
+            {"id":6,"title":"Game, Competition or Tournament","status":1,"createdDate":"2017-08-30T11:13:12.000Z"},
+            {"id":7,"title":"Party or Social Gathering","status":1,"createdDate":"2017-08-30T11:13:12.000Z"},
+            {"id":8,"title":"Race or Endurance Event","status":1,"createdDate":"2017-08-30T11:13:12.000Z"},
+            {"id":9,"title":"Seminar or Talk","status":1,"createdDate":"2017-08-30T11:13:12.000Z"},
+            {"id":10,"title":"Tradeshow, Consumer Show or Expo","status":1,"createdDate":"2017-08-30T11:13:12.000Z"}],
+        "message":"Event type list retrived successfully !"
+        }
+        
+## EventTopic [/eventtopic]
+
+### List All EventTopics [GET]
+
+This api will list all the available EventTopics in the system
+
++ Response 200 (application/json)
+       
+        {
+        "status":"OK","statusCode":"200","data":[
+            {"id":1,"title":"Auto,Boat & Air","parentId":0,"status":1,"createdDate":"2017-08-30T05:11:12.000Z"}],
+        "message":"Event topic list retrived successfully !"
+        }
+
+##Event Subtopics [/eventsubtopic?topicId=1]
+
+### List All  Event Subtopics For Particular Event Topic [GET]
+
+This api will list all the available Event Subtopics For Particular Event Topic in the system
+
++ Response 200 (application/json)
+        
+        {
+        "status":"OK","statusCode":"200","data":[
+                {"id":2,"title":"Auto","parentId":1,"status":1,"createdDate":"2017-08-30T05:11:12.000Z"},
+                {"id":3,"title":"Boat","parentId":1,"status":1,"createdDate":"2017-08-30T05:11:12.000Z"},
+                {"id":4,"title":"Air","parentId":1,"status":1,"createdDate":"2017-08-30T05:11:12.000Z"}
+            ],
+        "message":"Event subtopic retrived successfully !"
+        }
+
+##Request Code [/requestcode]
+
+### Request Verification Code [POST]
+
+This api is use to send verification code to users mobile number
+
++ Request (application/json)
+
+        {
+            "action":"verifyphone",
+            "phoneNo":"+919159652960"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "status": "OK",
+            "statusCode": "200",
+            "message": "Code sent successfully !",
+            "data": {
+                "ResponseMetadata": {
+                    "RequestId": "8c5d1fcf-53ef-5536-8152-4de59991c017"
+                },
+                "MessageId": "5dbfe360-8ea3-5c7a-a07d-b14a44dde95b"
+            }
+        }
+        
+        
+##Verify Code [/verifycode]
+
+### Check the verification code [POST]
+
+This api is used to validate the verification code received / entered by the user
+
++ Request (application/json)
+
+        {
+            "action":"verifycode",
+            "phoneNo":"+919655588073",
+            "code" : "3489"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "status": true,
+            "statusCode": "200",
+            "message": "Valid verifycation code"
+        }
