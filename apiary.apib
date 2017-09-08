@@ -338,3 +338,38 @@ This api is used to validate the verification code received / entered by the use
             "statusCode": "200",
             "message": "Valid verifycation code"
         }
+        
+##StatusCode[/statuscode]
+
+### Create new status Code [POST]
+
+You may create a new StatusCode this action.
+
++ Request (application/json)
+
+        {
+        "statusCode":"1002",
+        "language":"AR",
+        "message":"login failed in Arabien"
+        }
+
++ Response 201 (application/json)
+
+    + Body
+
+       {
+            "status": "OK",
+            "statusCode": "200",
+            "message": "statusCode list retrived successfully !",
+            "data": [
+               {
+                    "id": 2,
+                    "statusCode": "1002",
+                    "language": "AR",
+                    "message": "login failed in Arabien",
+                    "createdDate": "2017-09-08T13:29:21.000Z",
+                    "updatedDate": "2017-09-08T13:36:22.000Z",
+                    "status": "1"
+                    }
+                ]
+            }
