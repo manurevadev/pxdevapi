@@ -37,9 +37,6 @@ This api will list all the available role privileges in the system
 
 + Response 200 (application/json)
 
-        
-+ Response 200 (application/json)
-
         {
         "status":"OK","statusCode":"200",
         "message":"Role privilege retrived successfully !",
@@ -81,6 +78,30 @@ You may create a new user using this action. either fbid, indentityId  or  sub i
                 "message": "Premier ID Generated successfully !",
                 "premierId": 10273
             }
+            
+            
+## Validate User [/user/validate/sub/8cb0701c-e6f7-4c74-afcb-be4235db848d]
+
+Checks if user exist or not
+
+Paramerters:
+
+type - sub,fbid,identityid
+
+value - corresponding sub,fbid,identityid value
+
+### validate a User [GET]
+
++ Response 200 (application/json)
+
+        {
+    
+            "status":"OK","httpStatusCode":200,
+            "statusCode":200,
+            "data":[
+                   {"id":1,"cognitoUserId":"8cb0701c-e6f7-4c74-afcb-be4235db848d","identityId":null,"fbId":null,"premierId":10001,"firstName":"Thamizhvani","lastName":"I","email":"thamizhvani.i@manurevasolutions.net","mobile":"+918870301192","createdBy":0,"status":1,"createdDate":"2017-09-08T10:57:16.000Z","roleId":7}
+                   ]
+        }
             
 ## Site [/site]
 
@@ -235,6 +256,28 @@ This api will list all the available Languages in the system
         "message":"Language list retrived successfully !"
         }
         
+        
+## Get Language By Id [/language/1]
+
+### Get Language By LanguageId [GET]
+
+This api will give the particular Language  by id in the system
+
++ Response 200 (application/json)
+       
+        {
+        
+        "StatusCode":200,
+        "httpStatusCode":200,
+        "data":
+                [
+                {
+                "id":1,"language":"English","code":"en","createdDate":"2017-09-11T07:53:24.000Z","modifyDate":null,"status":1
+                }
+                ],
+                "message":"language retrived successfully !"
+        }
+        
 ## EventType [/eventtype]
 
 ### List All EventType [GET]
@@ -355,10 +398,8 @@ You may create a new StatusCode this action.
 
 + Response 201 (application/json)
 
-    + Body
-
         {
-            "status": "OK",
+           "status": "OK",
             "statusCode": "200",
             "message": "statusCode list retrived successfully !",
             "data": [
@@ -379,22 +420,23 @@ You may create a new StatusCode this action.
 This api is used to list all the status Code
 
 + Response 201 (application/json)
-    {
-    "status": "OK",
-    "statusCode": "200",
-    "message": "statusCode list retrived successfully !",
-    "data": [
-                {
-                    "id": 2,
-                    "statusCode": "1002",
-                    "language": "AR",
-                    "message": "login failed in Arabien",
-                    "createdDate": "2017-09-08T13:29:21.000Z",
-                    "updatedDate": "2017-09-08T13:36:22.000Z",
-                    "status": "1"
-                }
-            ]
-    }
+    
+        {
+            "status": "OK",
+            "statusCode": "200",
+            "message": "statusCode list retrived successfully !",
+            "data": [
+                    {
+                        "id": 2,
+                        "statusCode": "1002",
+                        "language": "AR",
+                        "message": "login failed in Arabien",
+                        "createdDate": "2017-09-08T13:29:21.000Z",
+                        "updatedDate": "2017-09-08T13:36:22.000Z",
+                        "status": "1"
+                    }
+                    ]
+        }
 
 
 ### DELETE status Code [DELETE]
@@ -408,8 +450,6 @@ You may delete a StatusCode this action.
         }
 
 + Response 201 (application/json)
-
-    + Body
 
         {
             "status": "OK",
@@ -430,10 +470,25 @@ You may Update a StatusCode this action.
         }
 + Response 201 (application/json)
 
-    + Body
-
         {
             "status": "OK",
             "statusCode": "200",
             "message": "statusCode Updated successfully !"
+        }
+        
+## Get Statuscode By Id [/statuscode/1]
+
+### Get Statuscode By statuscode Id [GET]
+
+This api will give the particular status code by id in the system
+
++ Response 200 (application/json)
+       
+        {
+        
+        "status":"OK","httpStatusCode":200,
+        "data":[
+               {"id":1,"statusCode":"1000","language":"FR","message":"login failed","createdDate":"2017-09-08T13:09:41.000Z","updatedDate":"2017-09-08T13:14:15.000Z","status":"1"}
+               ],
+               "message":"Status Code retrived successfully !"
         }
