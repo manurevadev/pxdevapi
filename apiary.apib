@@ -391,28 +391,17 @@ You may create a new StatusCode this action.
 + Request (application/json)
 
         {
-        "statusCode":"1002",
-        "language":"AR",
-        "message":"login failed in Arabien"
-        }
-
+         "isError":1,
+         "isSystemError":0,
+         "message" :[{"en" : "This is test messagenm"},{"IT" : "Test message ITxgcvb"},{"FR" : "Test message FRklnm"}]
+        }  
 + Response 201 (application/json)
 
         {
-           "status": "OK",
-            "statusCode": "200",
-            "message": "statusCode list retrived successfully !",
-            "data": [
-                    {
-                        "id": 2,
-                        "statusCode": "1002",
-                        "language": "AR",
-                        "message": "login failed in Arabien",
-                        "createdDate": "2017-09-08T13:29:21.000Z",
-                        "updatedDate": "2017-09-08T13:36:22.000Z",
-                        "status": "1"
-                    }
-                    ]
+            "status": "OK",
+            "statusCode": 201,
+            "httpStatusCode": 201,
+            "message": "statusCode insterted successfully !"
         }
             
 ### Get List all the Status Code [GET]
@@ -423,19 +412,22 @@ This api is used to list all the status Code
     
         {
             "status": "OK",
-            "statusCode": "200",
+            "statusCode": 200,
+            "httpStatusCode": 200,
             "message": "statusCode list retrived successfully !",
-            "data": [
+            "data": {
+                "PXE1002": [
                     {
-                        "id": 2,
-                        "statusCode": "1002",
-                        "language": "AR",
-                        "message": "login failed in Arabien",
-                        "createdDate": "2017-09-08T13:29:21.000Z",
-                        "updatedDate": "2017-09-08T13:36:22.000Z",
-                        "status": "1"
+                        "en": "This is test messagenm"
+                    },
+                    {
+                        "IT": "Test message ITxgcvb"
+                    },
+                    {
+                        "FR": "Test message FRklnm"
                     }
-                    ]
+                ]
+            }
         }
 
 
@@ -446,7 +438,7 @@ You may delete a StatusCode this action.
 + Request (application/json)
 
         {
-        "id":"2"
+            "statusCodeId" : "PXE1001"
         }
 
 + Response 201 (application/json)
@@ -463,17 +455,16 @@ You may Update a StatusCode this action.
 + Request (application/json)
 
         {
-        "id":"2",
-        "statusCode":"1021",
-        "language":"FR",
-        "message":"login failed in French"
+            "statusCodeId" : "PXE1001",
+            "message" :[{"en" : "This is test message"},{"IT" : "Test message ITvbnvb"}]
         }
 + Response 201 (application/json)
 
         {
             "status": "OK",
-            "statusCode": "200",
-            "message": "statusCode Updated successfully !"
+            "statusCode": 201,
+            "httpStatusCode": 201,
+            "message": "statusCode updated successfully !"
         }
         
 ## Get Statuscode By Id [/statuscode/1]
